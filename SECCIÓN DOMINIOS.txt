@@ -1,0 +1,127 @@
+ <!-- SECCIÓN DOMINIOS -->
+    <section id="dominios" class="section-content hidden">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Dominios y Atributos</h1>
+        <div class="card">
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">Control de Calidad de Datos</h3>
+            <p class="text-sm text-gray-600 mb-6">Los dominios evitan errores de escritura manual, forzando al usuario a seleccionar valores de una lista predefinida por la empresa.</p>
+            
+            <div class="bg-gray-50 border p-6 rounded-lg">
+                <h4 class="font-bold mb-2 text-gray-800 underline">Ruta de acceso rápido:</h4>
+                <p class="text-gray-700 text-sm">Para configurar o ver los dominios asociados a una capa específica:</p>
+                <div class="route-path">
+                    Clic derecho sobre la Capa > Data Design > Domains
+                </div>
+            </div>
+
+            <!-- Contenedor para insertar la imagen -->
+            <div class="img-container">
+                <span class="img-label text-blue-600">Referencia: Clic Derecho en Capa</span>
+                <!-- REEMPLAZA EL SRC CON TU IMAGEN -->
+                <i class="fas fa-mouse-pointer text-4xl mb-4 text-blue-400"></i>
+                <img src="Dominio01.png" alt="[Imagen: Menú Contextual de Capa]" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="img-placeholder-content">
+                    
+                   
+                    
+                </div>
+            </div>
+            
+            <!-- Contenedor 2: Explicación de la ventana (Imagen subida por usuario) -->
+            <div class="img-container">
+                <span class="img-label text-blue-600">Paso 2: Configuración de la Tabla</span>
+                <img src="dominio02.png" alt="[Imagen: Detalle de la Ventana de Dominios]" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="img-placeholder-content">
+                    <i class="fas fa-table text-4xl mb-4 text-blue-400"></i>
+                    <p class="font-bold text-gray-800">Insertar Captura de Ventana de Dominios</p>
+                    <p class="text-xs mt-2 px-10">Muestra la relación entre el nombre del dominio a la izquierda y sus códigos/descripciones a la derecha.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                <div class="p-4 border rounded bg-white">
+                    <p class="font-bold text-blue-800 mb-2">1. Configuración</p>
+                    <p class="text-sm text-gray-600">Crea el nombre del dominio y define los códigos (valor real) y descripciones (lo que ve el usuario).</p>
+                </div>
+                <div class="p-4 border rounded bg-white">
+                    <p class="font-bold text-blue-800 mb-2">2. Asignación</p>
+                    <p class="text-sm text-gray-600">Ve a <strong>Data Design > Fields</strong> y en la columna "Domain" selecciona la lista que acabas de crear.</p>
+                </div>
+            </div>
+            
+            <div class="alert-save mt-6 border-blue-500 bg-blue-50">
+                <p class="text-sm text-blue-800 italic">Recuerda siempre presionar el botón <strong>Save</strong> en la parte superior después de realizar cambios en los dominios o campos.</p>
+            </div>
+        </div>
+
+        <!-- PARTE 2: ATRIBUTOS (NUEVA PARTE AGREGADA) -->
+        <div class="card">
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">2. Tabla de Atributos (Información Alfanumérica)</h3>
+            <p class="text-sm text-gray-600 mb-4">Cada elemento dibujado en el mapa (punto, línea o polígono) tiene una fila correspondiente en la base de datos donde se almacena su información.</p>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-sm font-bold text-blue-800 mb-1"><i class="fas fa-table mr-2"></i> ¿Cómo abrir la tabla?</p>
+                <p class="text-xs text-blue-700">Clic derecho sobre la capa en el panel <strong>Contents</strong> > <strong>Attribute Table</strong> (o presiona Ctrl + T).</p>
+            </div>
+
+            <h4 class="font-bold text-gray-700 mb-2 underline">Componentes de la Tabla:</h4>
+            <ul class="space-y-4 text-sm text-gray-700">
+                <li class="flex items-start">
+                    <i class="fas fa-columns mt-1 mr-3 text-blue-500"></i>
+                    <div>
+                        <strong>Campos (Fields):</strong> Son las columnas. Representan categorías como <span class="attribute-tag">TIPO_CABLE</span>, <span class="attribute-tag">ESTADO</span> o <span class="attribute-tag">LONGITUD</span>.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-grip-lines mt-1 mr-3 text-blue-500"></i>
+                    <div>
+                        <strong>Registros (Records):</strong> Son las filas. Cada fila es un objeto real en el mapa.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-link mt-1 mr-3 text-green-500"></i>
+                    <div>
+                        <strong>Vínculo con Dominios:</strong> Si un campo tiene un dominio asignado, al hacer clic en la celda verás una lista desplegable en lugar de poder escribir cualquier texto.
+                    </div>
+                </li>
+            </ul>
+
+            <div class="img-container mt-6">
+                <span class="img-label text-green-600">Vista de la Tabla</span>
+                <img src="Atributos01.png" alt="[Imagen de la Tabla de Atributos]" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="img-placeholder-content" style="display:none">
+                    <i class="fas fa-database text-4xl mb-4 text-green-400"></i>
+                    <p>Referencia visual de Atributos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ALERTA FINAL DE SUMA IMPORTANCIA -->
+            <div class="critical-alert">
+                <i class="fas fa-exclamation-circle text-red-500 text-3xl mr-4"></i>
+                <div>
+                    <h4 class="font-bold text-red-800">¡AVISO CRÍTICO DE SEGURIDAD DE DATOS!</h4>
+                    <p class="text-sm text-red-700">
+                        Una vez terminado de configurar o asignar los dominios, es <strong>obligatorio</strong> presionar el botón <strong>Save</strong> en la parte superior. 
+                        Esta sección es de <strong>suma importancia</strong> para la integridad de la base de datos GIS; 
+                        por favor, verifica doblemente los códigos para <strong>evitar equivocaciones</strong> que puedan afectar el análisis posterior.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- ALERTA FINAL DE SUMA IMPORTANCIA -->
+            <div class="critical-alert">
+                <i class="fas fa-exclamation-circle text-red-500 text-3xl mr-4"></i>
+                <div>
+                    <h4 class="font-bold text-red-800">¡AVISO CRÍTICO DE SEGURIDAD DE DATOS!</h4>
+                    <p class="text-sm text-red-700">
+                        Una vez terminado de configurar o asignar los dominios, es <strong>obligatorio</strong> presionar el botón <strong>Save</strong> en la parte superior. 
+                        Esta sección es de <strong>suma importancia</strong> para la integridad de la base de datos GIS; 
+                        por favor, verifica doblemente los códigos para <strong>evitar equivocaciones</strong> que puedan afectar el análisis posterior.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
