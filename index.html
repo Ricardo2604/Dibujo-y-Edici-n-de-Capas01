@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Referencia ArcGIS Pro - Empresa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --arcgis-blue: #005e95;
+            --arcgis-dark: #1a1a1a;
+            --arcgis-light: #f4f4f4;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--arcgis-light);
+        }
+        .sidebar {
+            background-color: var(--arcgis-dark);
+            height: 100vh;
+            position: fixed;
+            width: 260px;
+            color: white;
+            overflow-y: auto;
+        }
+        .content {
+            margin-left: 260px;
+            padding: 40px;
+        }
+        .nav-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+        .nav-item:hover {
+            background-color: #333;
+            border-left: 4px solid var(--arcgis-blue);
+        }
+        .active-nav {
+            background-color: #333;
+            border-left: 4px solid var(--arcgis-blue);
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .step-badge {
+            background-color: var(--arcgis-blue);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+        }
+        .alert-save {
+            border-left: 5px solid #e74c3c;
+            background-color: #fdf2f2;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        pre {
+            background: #2d2d2d;
+            color: #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        .img-placeholder {
+            background: #ddd;
+            border: 2px dashed #bbb;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin: 15px 0;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="p-6 text-center border-b border-gray-700">
+        <i class="fas fa-map-marked-alt text-4xl mb-2 text-blue-400"></i>
+        <h2 class="text-xl font-bold uppercase tracking-wider">Guía GIS</h2>
+        <p class="text-xs text-gray-400">Referencia para Nuevos Integrantes</p>
+    </div>
+    <nav class="mt-4">
+        <div class="nav-item active-nav" onclick="showSection('inicio')"><i class="fas fa-desktop mr-3"></i> Interfaz y Paneles</div>
+        <div class="nav-item" onclick="showSection('edicion')"><i class="fas fa-edit mr-3"></i> Dibujo y Edición</div>
+        <div class="nav-item" onclick="showSection('datos')"><i class="fas fa-database mr-3"></i> Crear Shapefiles</div>
+        <div class="nav-item" onclick="showSection('dominios')"><i class="fas fa-list-ul mr-3"></i> Dominios y Atributos</div>
+        <div class="nav-item" onclick="showSection('exportar')"><i class="fas fa-file-export mr-3"></i> KMZ y Exportación</div>
+        <div class="nav-item" onclick="showSection('paquetes')"><i class="fas fa-box-open mr-3"></i> Empaquetado (.mpkx)</div>
+    </nav>
+</div>
+
+<div class="content">
+    <!-- SECCIÓN INICIO -->
+    <section id="inicio" class="section-content">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Configuración del Espacio de Trabajo</h1>
+        <div class="card">
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">Organización de Paneles (Layout Estándar)</h3>
+            <p class="mb-4 text-gray-600">Para trabajar según el flujo de la empresa, acomoda tus paneles de la siguiente manera:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="border p-4 rounded bg-blue-50">
+                    <h4 class="font-bold"><i class="fas fa-arrow-left text-blue-600"></i> Izquierda: Contents</h4>
+                    <p class="text-sm">Muestra el orden de dibujo y las capas activas. Acceso rápido a simbología.</p>
+                </div>
+                <div class="border p-4 rounded bg-green-50 text-right">
+                    <h4 class="font-bold">Derecha: Catalog / Tools <i class="fas fa-arrow-right text-green-600"></i></h4>
+                    <p class="text-sm">Gestión de archivos, conexiones a carpetas y búsqueda de herramientas.</p>
+                </div>
+            </div>
+
+            <div class="img-placeholder">
+                
+            </div>
+            
+            <p class="mt-4 text-sm text-gray-500 italic">*Si pierdes un panel, ve a la pestaña superior <strong>View</strong> y haz clic en el botón del panel correspondiente.</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN EDICIÓN -->
+    <section id="edicion" class="section-content hidden">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Dibujo y Edición de Capas</h1>
+        <div class="card">
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">¿Cómo crear líneas e iconos?</h3>
+            
+            <div class="space-y-4">
+                <div class="flex items-start">
+                    <span class="step-badge">1</span>
+                    <div>
+                        <p class="font-bold">Activar Pestaña Edit</p>
+                        <p class="text-sm text-gray-600">Haz clic en la pestaña <strong>Edit</strong> en la cinta de opciones superior.</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <span class="step-badge">2</span>
+                    <div>
+                        <p class="font-bold">Abrir Panel Create</p>
+                        <p class="text-sm text-gray-600">Haz clic en el botón <strong>Create</strong>. Se abrirá el panel a la derecha con tus capas disponibles.</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <span class="step-badge">3</span>
+                    <div>
+                        <p class="font-bold">Digitalizar</p>
+                        <p class="text-sm text-gray-600">Selecciona el tipo de objeto (Punto/Línea) y haz clic en el mapa. Presiona <strong>F2</strong> para terminar una línea.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert-save mt-6">
+                <h4 class="text-red-700 font-bold"><i class="fas fa-exclamation-triangle"></i> ¡IMPORTANTE!</h4>
+                <p class="text-sm text-red-800">Los dibujos no se guardan automáticamente. Debes hacer clic en el botón <strong>SAVE</strong> dentro de la pestaña <strong>Edit</strong> para confirmar los cambios en la base de datos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DATOS -->
+    <section id="datos" class="section-content hidden">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Creación de Shapefiles (.shp)</h1>
+        <div class="card">
+            <p class="mb-4">Para crear una capa nueva desde cero, sigue estos pasos en el panel de <strong>Catalog</strong>:</p>
+            <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                <li>Ubica la carpeta de tu proyecto en el panel derecho.</li>
+                <li>Clic derecho sobre la carpeta > <strong>New</strong> > <strong>Shapefile</strong>.</li>
+                <li>En el panel que aparece (Geoprocessing):
+                    <ul class="list-disc ml-6 mt-2 text-sm text-gray-500">
+                        <li><strong>Feature Class Name:</strong> Nombre sin espacios ni caracteres especiales.</li>
+                        <li><strong>Geometry Type:</strong> Point (Puntos), Polyline (Líneas) o Polygon.</li>
+                        <li><strong>Coordinate System:</strong> Selecciona el sistema de la empresa (ej. WGS84).</li>
+                    </ul>
+                </li>
+                <li>Presiona <strong>Run</strong>.</li>
+            </ol>
+            <div class="img-placeholder">
+                
+            </div>
+        </div>
+    </section>
+
+     <!-- SECCIÓN DOMINIOS -->
+    <section id="dominios" class="section-content hidden">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Dominios y Atributos</h1>
+        <div class="card">
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">Control de Calidad de Datos</h3>
+            <p class="text-sm text-gray-600 mb-6">Los dominios evitan errores de escritura manual, forzando al usuario a seleccionar valores de una lista predefinida por la empresa.</p>
+            
+            <div class="bg-gray-50 border p-6 rounded-lg">
+                <h4 class="font-bold mb-2 text-gray-800 underline">Ruta de acceso rápido:</h4>
+                <p class="text-gray-700 text-sm">Para configurar o ver los dominios asociados a una capa específica:</p>
+                <div class="route-path">
+                    Clic derecho sobre la Capa > Data Design > Domains
+                </div>
+            </div>
+
+            <!-- Contenedor para insertar la imagen -->
+            <div class="img-container">
+                <span class="img-label text-blue-600">Referencia: Clic Derecho en Capa</span>
+                <!-- REEMPLAZA EL SRC CON TU IMAGEN -->
+                <i class="fas fa-mouse-pointer text-4xl mb-4 text-blue-400"></i>
+                <img src="Dominio01.png" alt="[Imagen: Menú Contextual de Capa]" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="img-placeholder-content">
+                    
+                   
+                    
+                </div>
+            </div>
+            
+            <!-- Contenedor 2: Explicación de la ventana (Imagen subida por usuario) -->
+            <div class="img-container">
+                <span class="img-label text-blue-600">Paso 2: Configuración de la Tabla</span>
+                <img src="dominio02.png" alt="[Imagen: Detalle de la Ventana de Dominios]" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="img-placeholder-content">
+                    <i class="fas fa-table text-4xl mb-4 text-blue-400"></i>
+                    <p class="font-bold text-gray-800">Insertar Captura de Ventana de Dominios</p>
+                    <p class="text-xs mt-2 px-10">Muestra la relación entre el nombre del dominio a la izquierda y sus códigos/descripciones a la derecha.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                <div class="p-4 border rounded bg-white">
+                    <p class="font-bold text-blue-800 mb-2">1. Configuración</p>
+                    <p class="text-sm text-gray-600">Crea el nombre del dominio y define los códigos (valor real) y descripciones (lo que ve el usuario).</p>
+                </div>
+                <div class="p-4 border rounded bg-white">
+                    <p class="font-bold text-blue-800 mb-2">2. Asignación</p>
+                    <p class="text-sm text-gray-600">Ve a <strong>Data Design > Fields</strong> y en la columna "Domain" selecciona la lista que acabas de crear.</p>
+                </div>
+            </div>
+            
+            <div class="alert-save mt-6 border-blue-500 bg-blue-50">
+                <p class="text-sm text-blue-800 italic">Recuerda siempre presionar el botón <strong>Save</strong> en la parte superior después de realizar cambios en los dominios o campos.</p>
+            </div>
+        </div>
+
+        <!-- PARTE 2: ATRIBUTOS (NUEVA PARTE AGREGADA) -->
+        <div class="card">
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">2. Tabla de Atributos (Información Alfanumérica)</h3>
+            <p class="text-sm text-gray-600 mb-4">Cada elemento dibujado en el mapa (punto, línea o polígono) tiene una fila correspondiente en la base de datos donde se almacena su información.</p>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-sm font-bold text-blue-800 mb-1"><i class="fas fa-table mr-2"></i> ¿Cómo abrir la tabla?</p>
+                <p class="text-xs text-blue-700">Clic derecho sobre la capa en el panel <strong>Contents</strong> > <strong>Attribute Table</strong> (o presiona Ctrl + T).</p>
+            </div>
+
+            <h4 class="font-bold text-gray-700 mb-2 underline">Componentes de la Tabla:</h4>
+            <ul class="space-y-4 text-sm text-gray-700">
+                <li class="flex items-start">
+                    <i class="fas fa-columns mt-1 mr-3 text-blue-500"></i>
+                    <div>
+                        <strong>Campos (Fields):</strong> Son las columnas. Representan categorías como <span class="attribute-tag">TIPO_CABLE</span>, <span class="attribute-tag">ESTADO</span> o <span class="attribute-tag">LONGITUD</span>.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-grip-lines mt-1 mr-3 text-blue-500"></i>
+                    <div>
+                        <strong>Registros (Records):</strong> Son las filas. Cada fila es un objeto real en el mapa.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-link mt-1 mr-3 text-green-500"></i>
+                    <div>
+                        <strong>Vínculo con Dominios:</strong> Si un campo tiene un dominio asignado, al hacer clic en la celda verás una lista desplegable en lugar de poder escribir cualquier texto.
+                    </div>
+                </li>
+            </ul>
+
+            <div class="img-container mt-6">
+                <span class="img-label text-green-600">Vista de la Tabla</span>
+                <img src="Atributos01.png" alt="[Imagen de la Tabla de Atributos]" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="img-placeholder-content" style="display:none">
+                    <i class="fas fa-database text-4xl mb-4 text-green-400"></i>
+                    <p>Referencia visual de Atributos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ALERTA FINAL DE SUMA IMPORTANCIA -->
+            <div class="critical-alert">
+                <i class="fas fa-exclamation-circle text-red-500 text-3xl mr-4"></i>
+                <div>
+                    <h4 class="font-bold text-red-800">¡AVISO CRÍTICO DE SEGURIDAD DE DATOS!</h4>
+                    <p class="text-sm text-red-700">
+                        Una vez terminado de configurar o asignar los dominios, es <strong>obligatorio</strong> presionar el botón <strong>Save</strong> en la parte superior. 
+                        Esta sección es de <strong>suma importancia</strong> para la integridad de la base de datos GIS; 
+                        por favor, verifica doblemente los códigos para <strong>evitar equivocaciones</strong> que puedan afectar el análisis posterior.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN EXPORTAR -->
+    <section id="exportar" class="section-content hidden">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">KMZ y Exportación de Capas</h1>
+        <div class="card">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 border rounded hover:shadow-md transition">
+                    <h4 class="font-bold text-blue-600 text-lg mb-2"><i class="fas fa-globe"></i> Exportar a Google Earth</h4>
+                    <p class="text-sm mb-2">Usa la herramienta:</p>
+                    <code class="block bg-gray-200 p-1 text-center rounded">Layer to KML</code>
+                    <p class="text-xs mt-2 text-gray-500">Recuerda: El KML respetará la simbología que tengas activa en el mapa.</p>
+                </div>
+                <div class="p-4 border rounded hover:shadow-md transition">
+                    <h4 class="font-bold text-green-600 text-lg mb-2"><i class="fas fa-layer-group"></i> Exportar Layer File</h4>
+                    <p class="text-sm mb-2">Para compartir una capa con su color y estilo:</p>
+                    <p class="text-xs">Clic derecho en la capa > <strong>Sharing</strong> > <strong>Save As Layer File (.lpkx)</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PAQUETES -->
+    <section id="paquetes" class="section-content hidden">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Empaquetado de Proyectos</h1>
+        <div class="card">
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">Map Package (.mpkx)</h3>
+            <p class="mb-4">Cuando necesites enviar TODO el proyecto por correo o subirlo a la nube sin que se pierdan las rutas de los archivos:</p>
+            
+            <ol class="list-decimal ml-6 space-y-3">
+                <li>Ve a la pestaña superior <strong>Share</strong>.</li>
+                <li>Haz clic en el botón <strong>Map Package</strong>.</li>
+                <li>Selecciona <strong>Upload package to online account</strong> o <strong>Save package to file</strong>.</li>
+                <li>Presiona <strong>Analyze</strong> para verificar errores de ruta.</li>
+                <li>Presiona <strong>Package</strong>.</li>
+            </ol>
+            
+            <div class="mt-6 p-4 bg-yellow-50 border-l-4 border-yellow-400">
+                <p class="text-sm text-yellow-800 font-bold">Nota de Soporte:</p>
+                <p class="text-xs text-yellow-700">El archivo .mpkx generado es un comprimido que incluye el mapa y los datos reales. Es la forma más segura de entregar trabajos finales en esta empresa.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function showSection(id) {
+        // Ocultar todas las secciones
+        const sections = document.querySelectorAll('.section-content');
+        sections.forEach(sec => sec.classList.add('hidden'));
+        
+        // Mostrar sección seleccionada
+        document.getElementById(id).classList.remove('hidden');
+        
+        // Actualizar navegación
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => item.classList.remove('active-nav'));
+        
+        event.currentTarget.classList.add('active-nav');
+        
+        // Scroll al inicio
+        window.scrollTo(0,0);
+    }
+</script>
+
+</body>
+</html>
